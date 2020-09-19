@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docker-private-registry-deployment  
+  labels:
+    app: docker-private-registry
+spec:  
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docker-private-registry
+  template:
+    metadata:
+      labels:
+        app: docker-private-registry
+    spec:
+      containers:
+      - name: docker-private-registry
+        image: registry:latest
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - mountPath: "/var/lib/registry"
+          name: nfsvol
+        ports:
+        - containerPort: 5000
+          protocol: TCP    
+      volumes:
+      - name: nfsvol
+        persistentVolumeClaim:
+          claimName: nfs-pvc4 
+          
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    service: docker-private-registry
+  name: docker-private-registry
+spec:
+  ports:
+  - port: 5000
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: docker-private-registry
