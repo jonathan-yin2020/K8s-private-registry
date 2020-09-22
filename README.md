@@ -46,4 +46,4 @@ Check the image with the tags
 
      tar -xvf /backup/registry-data.tar .
 
-[flow]: https://github.com/jonathan-yin2020/K8s-private-registry/issues/1#issue-706040703
+[flow]: https://user-images.githubusercontent.com/64214379/93840135-8a866900-fc4c-11ea-81c5-2d14f8c0d06b.png
