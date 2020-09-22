@@ -1,7 +1,8 @@
 # K8s-private-registry
 This private registry is password protected. The password data and the images in the repo is persisted in NFS through the use of PV and PVC. The images are mounted under /var/lib/registry and the user data is mounted at /auth.
 
-![alt text](https://github.com/jonathan-yin2020/K8s-private-registry/issues/1#issue-706040703)
+![alt text](https://github.com/jonathan-yin2020/K8s-private-registry/issues/1#issue-706040703?raw=true "Title")
+
 # Start/Stop private registry in  K8s cluster
 
 ## start private registry<a id="sec-1-1" name="sec-1-1"></a>
