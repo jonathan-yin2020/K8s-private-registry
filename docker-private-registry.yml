@@ -18,14 +18,28 @@ spec:
       - name: docker-private-registry
         image: registry:latest
         imagePullPolicy: IfNotPresent
+        env:
+        - name: REGISTRY_AUTH_HTPASSWD_REALM
+          value: "Registry Realm"
+        - name: REGISTRY_AUTH_HTPASSWD_PATH
+          value: "/auth/.htpasswd"
+        - name: REGISTRY_AUTH
+          value: "htpasswd"
+        - name: REGISTRY_STORAGE_DELETE_ENABLED
+          value: "true"
         volumeMounts:
         - mountPath: "/var/lib/registry"
-          name: nfsvol
+          name: nfsvol4
+        - mountPath: "/auth"
+          name: nfsvol3
         ports:
         - containerPort: 5000
           protocol: TCP    
       volumes:
-      - name: nfsvol
+      - name: nfsvol3
+        persistentVolumeClaim:
+          claimName: nfs-pvc3
+      - name: nfsvol4
         persistentVolumeClaim:
           claimName: nfs-pvc4 
           
