@@ -1,5 +1,5 @@
 # K8s-private-registry
-All the images in the repo is persisted in NFS through the use of PV and PVC. It is mounted under /var/lib/registry. 
+This private registry is password protected. The password data and the images in the repo is persisted in NFS through the use of PV and PVC. The images are mounted under /var/lib/registry and the user data is mounted at /auth.
 
 # Start/Stop private registry in  K8s cluster
 
